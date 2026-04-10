@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오희은 | Account Manager — KREAM 지원</title>
+  <meta name="description" content="B2B 파트너 협상·계약 분석·운영 구조 설계 경험을 보유한 Account Manager 지원자. AI Native 실무 활용, 셀러 어카운트 관리, 데이터 기반 운영 개선">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:        #FFFFFF;
+      --bg-soft:      #F7F7F8;
+      --bg-card:      #F3F3F4;
+      --border:       #E5E5E6;
+      --border-hover: #282D32;
+      --text-1:       #141416;
+      --text-2:       #50505A;
+      --text-3:       #909098;
+      --charcoal:     #282D32;
+      --charcoal-2:   #1A1E21;
+      --charcoal-a:   rgba(40,45,50,0.07);
+      --sh-sm:        0 1px 4px rgba(0,0,0,0.06);
+      --sh-md:        0 4px 20px rgba(0,0,0,0.09);
+      --sh-lg:        0 12px 40px rgba(0,0,0,0.12);
+      --r:            10px;
+      --r-sm:         6px;
+      --ease:         cubic-bezier(.4,0,.2,1);
+      --t:            0.22s;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-1);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
+    }
+
+    /* ─── LAYOUT ─── */
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    .hr { width: 100%; height: 1px; background: var(--border); }
+
+    /* ─── HEADER ─── */
+    header {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--t) var(--ease);
+    }
+    header.on { border-bottom-color: var(--border); }
+    .h-inner {
+      max-width: 980px; margin: 0 auto; padding: 0 28px;
+      height: 62px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-size: 16px; font-weight: 800;
+      color: var(--charcoal); text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    nav { display: flex; gap: 30px; }
+    nav a {
+      font-size: 14px; font-weight: 500;
+      color: var(--text-2); text-decoration: none;
+      transition: color var(--t);
+    }
+    nav a:hover { color: var(--charcoal); }
+
+    /* ─── MOBILE NAV ─── */
+    .nav-toggle {
+      display: none; width: 36px; height: 36px;
+      border: none; background: none; cursor: pointer;
+      flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+    }
+    .nav-toggle span {
+      display: block; width: 20px; height: 2px;
+      background: var(--charcoal); border-radius: 2px;
+      transition: transform var(--t) var(--ease), opacity var(--t);
+    }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 800px) {
+      .nav-toggle { display: flex; }
+      nav {
+        display: none; position: absolute; top: 62px; left: 0; right: 0;
+        background: rgba(255,255,255,0.96);
+        backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+        flex-direction: column; gap: 0;
+        border-bottom: 1px solid var(--border);
+        padding: 8px 0;
+      }
+      nav.open { display: flex; }
+      nav a { padding: 14px 28px; font-size: 15px; }
+      nav a:hover { background: var(--bg-soft); }
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      padding: 96px 0 80px;
+      position: relative; overflow: hidden;
+      background-image: radial-gradient(circle, rgba(40,45,50,0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+      background-position: 14px 14px;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-3);
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--charcoal);
+    }
+    .hero-name {
+      font-size: clamp(52px, 7vw, 80px);
+      font-weight: 800; letter-spacing: -0.04em;
+      color: var(--charcoal); line-height: 1.0;
+      margin-bottom: 10px;
+    }
+    .hero-role {
+      font-size: clamp(17px, 2.2vw, 20px);
+      font-weight: 500; color: var(--text-2);
+      letter-spacing: -0.01em;
+      margin-bottom: 36px;
+    }
+    .hero-tagline {
+      position: relative;
+      padding: 0 0 0 22px;
+      margin-bottom: 48px;
+      max-width: 520px;
+    }
+    .hero-tagline::before {
+      content: '';
+      position: absolute; left: 0; top: 4px; bottom: 4px;
+      width: 3px; border-radius: 2px;
+      background: var(--charcoal);
+    }
+    .hero-tagline p {
+      font-size: clamp(15px, 1.8vw, 17px);
+      color: var(--text-1); line-height: 1.85;
+    }
+    .hero-tagline strong { font-weight: 600; }
+    .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* ─── BUTTONS ─── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 26px;
+      font-size: 14px; font-weight: 600;
+      border-radius: var(--r-sm); text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: all var(--t) var(--ease);
+    }
+    .btn svg { flex-shrink: 0; }
+    .btn-dark {
+      background: var(--charcoal); color: var(--white);
+      border: 1.5px solid var(--charcoal);
+    }
+    .btn-dark:hover { background: var(--charcoal-2); border-color: var(--charcoal-2); transform: translateY(-1px); box-shadow: var(--sh-md); }
+    .btn-outline {
+      background: transparent; color: var(--charcoal);
+      border: 1.5px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--charcoal); background: var(--bg-card); transform: translateY(-1px); }
+
+    /* ─── SECTION COMMON ─── */
+    .sec { padding: 76px 0; }
+    .sec-alt { background: var(--bg-soft); }
+    .sec-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 10px;
+    }
+    .sec-title {
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 700; letter-spacing: -0.025em;
+      color: var(--charcoal); line-height: 1.3;
+      margin-bottom: 40px;
+    }
+
+    /* ─── ABOUT ─── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px; align-items: start;
+    }
+    .about-text { font-size: 16px; color: var(--text-2); line-height: 1.9; }
+    .about-text strong { color: var(--text-1); font-weight: 600; }
+    .about-text p + p { margin-top: 18px; }
+    .about-chips {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px;
+    }
+    .chip {
+      font-size: 12px; font-weight: 600;
+      padding: 6px 14px; border-radius: 100px;
+      background: var(--charcoal-a); color: var(--charcoal);
+      letter-spacing: 0.01em;
+    }
+    .about-sidebar { display: flex; flex-direction: column; gap: 14px; }
+    .sidebar-card {
+      padding: 20px 22px;
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--r);
+    }
+    .sidebar-card-top {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+    }
+    .sidebar-icon {
+      width: 30px; height: 30px; border-radius: var(--r-sm);
+      background: var(--charcoal);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .sidebar-card-label {
+      font-size: 13px; font-weight: 700; color: var(--text-1);
+    }
+    .sidebar-card-desc {
+      font-size: 13px; color: var(--text-2); line-height: 1.6;
+    }
+
+    /* ─── METRICS ─── */
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 14px;
+    }
+    .m-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--r); padding: 28px 18px; text-align: center;
+      transition: box-shadow var(--t) var(--ease), transform var(--t) var(--ease), border-color var(--t);
+    }
+    .m-card:hover {
+      box-shadow: var(--sh-md); transform: translateY(-3px);
+      border-color: var(--charcoal);
+    }
+    .m-number {
+      display: inline-block;
+      font-size: 30px; font-weight: 800;
+      color: var(--charcoal); letter-spacing: -0.03em;
+      line-height: 1.1; margin-bottom: 8px;
+      background: var(--charcoal-a);
+      padding: 4px 14px; border-radius: 8px;
+    }
+    .m-label {
+      font-size: 13px; font-weight: 600; color: var(--text-1);
+      margin-bottom: 6px;
+    }
+    .m-sub { font-size: 11px; color: var(--text-3); line-height: 1.5; }
+
+    /* ─── CASES ─── */
+    .cases-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 18px;
+    }
+    .c-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--r); padding: 30px;
+      display: flex; flex-direction: column; gap: 14px;
+      text-decoration: none; color: inherit;
+      transition: box-shadow var(--t) var(--ease),
+                  transform var(--t) var(--ease),
+                  border-color var(--t);
+    }
+    .c-card:hover {
+      box-shadow: var(--sh-md); transform: translateY(-3px);
+      border-color: var(--charcoal);
+    }
+    .c-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+    .c-tag {
+      font-size: 11px; font-weight: 600;
+      color: var(--charcoal); background: var(--charcoal-a);
+      padding: 4px 10px; border-radius: 100px;
+    }
+    .c-title {
+      font-size: 17px; font-weight: 700;
+      color: var(--text-1); letter-spacing: -0.02em; line-height: 1.45;
+    }
+    .c-desc {
+      font-size: 14px; color: var(--text-2);
+      line-height: 1.75; flex: 1;
+    }
+    .c-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 16px; border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+    .c-metric { display: flex; flex-direction: column; gap: 2px; }
+    .c-metric-val {
+      display: inline-block;
+      font-size: 18px; font-weight: 800;
+      color: var(--charcoal); letter-spacing: -0.02em;
+      background: var(--charcoal-a);
+      padding: 2px 10px; border-radius: 6px;
+    }
+    .c-metric-lab { font-size: 11px; color: var(--text-3); }
+    .c-arrow {
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--charcoal); flex-shrink: 0;
+      transition: background var(--t), border-color var(--t), transform var(--t);
+    }
+    .c-card:hover .c-arrow {
+      background: var(--charcoal); border-color: var(--charcoal); color: var(--white);
+      transform: translateX(3px);
+    }
+
+    /* ─── EXPERIENCE ─── */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid; grid-template-columns: 180px 1fr;
+      gap: 32px; padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-period { font-size: 13px; color: var(--text-3); padding-top: 3px; }
+    .exp-company {
+      font-size: 16px; font-weight: 700; color: var(--text-1);
+      letter-spacing: -0.01em; margin-bottom: 4px;
+    }
+    .exp-role {
+      font-size: 14px; color: var(--text-2); margin-bottom: 14px;
+    }
+    .exp-points { display: flex; flex-direction: column; gap: 7px; }
+    .exp-point {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--text-2); line-height: 1.65;
+    }
+    .exp-point::before {
+      content: '';
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--charcoal); flex-shrink: 0;
+      margin-top: 9px;
+    }
+
+    /* ─── SKILLS ─── */
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
+    }
+    .sk-group {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--r); padding: 22px 24px;
+    }
+    .sk-title {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--charcoal);
+      margin-bottom: 16px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sk-list { display: flex; flex-direction: column; gap: 9px; }
+    .sk-item {
+      display: flex; align-items: center; gap: 9px;
+      font-size: 13.5px; color: var(--text-2);
+    }
+    .sk-item::before {
+      content: '';
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--charcoal); flex-shrink: 0;
+    }
+
+    /* ─── JD MATCH ─── */
+    .jd-grid {
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .jd-item {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border: 1.5px solid var(--border);
+      border-radius: var(--r); overflow: hidden;
+      transition: border-color var(--t) var(--ease), box-shadow var(--t) var(--ease);
+    }
+    .jd-item:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--sh-md);
+    }
+    .jd-left {
+      background: var(--charcoal); color: var(--white);
+      padding: 28px 32px; display: flex; flex-direction: column; gap: 10px;
+    }
+    .jd-num {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+    }
+    .jd-req {
+      font-size: 15px; font-weight: 600; line-height: 1.55;
+      color: var(--white);
+    }
+    .jd-keyword-row {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;
+    }
+    .jd-kw {
+      font-size: 11px; font-weight: 600;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.75);
+      padding: 3px 9px; border-radius: 20px;
+      letter-spacing: 0.02em;
+    }
+    .jd-right {
+      background: var(--white); padding: 28px 32px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .jd-match-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--text-3);
+    }
+    .jd-match-title {
+      font-size: 14px; font-weight: 700; color: var(--text-1);
+      line-height: 1.5;
+    }
+    .jd-match-points {
+      display: flex; flex-direction: column; gap: 8px; margin-top: 4px;
+    }
+    .jd-match-point {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: var(--text-2); line-height: 1.6;
+    }
+    .jd-match-point::before {
+      content: '';
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--charcoal); flex-shrink: 0; margin-top: 8px;
+    }
+    @media (max-width: 680px) {
+      .jd-item { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 60px 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer-grid {
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .footer-name {
+      font-size: 22px; font-weight: 800;
+      color: var(--charcoal); letter-spacing: -0.03em;
+      margin-bottom: 4px;
+    }
+    .footer-sub { font-size: 14px; color: var(--text-3); }
+    .footer-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* ─── FADE IN ─── */
+    .fi {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+    }
+    .fi.show { opacity: 1; transform: none; }
+    .fi:nth-child(2) { transition-delay: 0.08s; }
+    .fi:nth-child(3) { transition-delay: 0.16s; }
+    .fi:nth-child(4) { transition-delay: 0.24s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 800px) {
+      .hero-bg { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .metrics-grid { grid-template-columns: repeat(2,1fr); }
+      .cases-grid { grid-template-columns: 1fr; }
+      .exp-item { grid-template-columns: 1fr; gap: 8px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 500px) {
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .hero-cta { flex-direction: column; }
+      .btn { justify-content: center; }
+      .sec { padding: 56px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<header id="hd">
+  <div class="h-inner">
+    <a href="#" class="logo">오희은</a>
+    <nav id="nav">
+      <a href="#about">소개</a>
+      <a href="#cases">케이스 스터디</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Account Manager · Business Development
+    </div>
+
+    <h1 class="hero-name">오희은</h1>
+    <p class="hero-role">Account Manager 지원</p>
+
+    <div class="hero-tagline">
+      <p>
+        파트너 400곳의 데이터를 읽고, 협상하고, 구조로 만들어왔습니다.<br>
+        <strong>KREAM이 파트너에게 요구하는 것도 결국 같은 언어입니다.</strong><br>
+        <span style="font-size:15px; color:var(--text-3);">파트너 협상 · 계약 분석 · 운영 구조 설계 · AI Native 실무 활용</span>
+      </p>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#cases" class="btn btn-dark">
+        케이스 스터디 보기
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<!-- ══ ABOUT ══ -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <p class="sec-eyebrow">About</p>
+    <h2 class="sec-title">시키지 않아도 고치는 사람,<br>구조가 없으면 만드는 사람</h2>
+
+    <div class="about-grid">
+      <div>
+        <div class="about-text fi">
+          <p>
+            <strong>제가 해온 개선은 대부분 누군가의 지시가 아니라,
+            현장에서 직접 발견한 문제에서 시작되었습니다.</strong>
+            고객 접점에서 같은 문제가 반복될 때 '어떻게 빠르게 처리할까'보다
+            '왜 이 문제가 반복되는가'를 먼저 묻는 습관 —
+            대부분의 답은 고객이 아니라 서비스 구조에 있었습니다.
+          </p>
+          <p>
+            AI 도구를 실무에 도입한 것도 같은 이유였습니다.
+            더 많은 일을 처리하기 위해서가 아니라,
+            어떤 업무를 어떤 도구에 위임할지를 정의하는 구조 설계 — 그것이 제가 AI를 쓰는 방식입니다. 저에게 AI는 효율화 도구가 아니라, 사람이 해야 할 판단을 더 선명하게 만드는 구조의 일부입니다.
+            비개발 직군 중 유일하게 AI 도구 비용을 업무비로 공식 승인받아
+            <strong>생성형 AI를 실무 파트너로 직접 운용</strong>해왔습니다.
+          </p>
+          <p>
+            팀이 없어진 자리에서 연속성을 만들고,
+            구조가 없는 곳에서 기준을 직접 세워온 것
+            — 그것이 제가 일해온 방식입니다.
+          </p>
+        </div>
+        <div class="about-chips fi">
+          <span class="chip">B2B 파트너 협상 · 계약 분석</span>
+          <span class="chip">어카운트 관리 · 운영 구조 설계</span>
+          <span class="chip">AI Native 실무 활용</span>
+          <span class="chip">VOC 분석 · 서비스 개선</span>
+          <span class="chip">데이터 기반 운영 지표 설계</span>
+          <span class="chip">자동화 직접 구현</span>
+        </div>
+      </div>
+
+      <div class="about-sidebar">
+        <div class="sidebar-card fi">
+          <div class="sidebar-card-top">
+            <div class="sidebar-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 7C2 4.24 4.24 2 7 2s5 2.24 5 5-2.24 5-5 5-5-2.24-5-5z" stroke="white" stroke-width="1.4"/>
+                <path d="M5 7h4M7 5v4" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="sidebar-card-label">문제를 구조로 보는 눈</span>
+          </div>
+          <p class="sidebar-card-desc">같은 문제가 반복되면 고객이 아닌 서비스 구조를 바꿉니다. 표면적 불편을 서비스 설계 문제로 재정의하는 것이 출발점입니다.</p>
+        </div>
+        <div class="sidebar-card fi">
+          <div class="sidebar-card-top">
+            <div class="sidebar-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <rect x="2" y="2" width="10" height="10" rx="2" stroke="white" stroke-width="1.4"/>
+                <path d="M5 7h4M7 5v4" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="sidebar-card-label">기준이 없으면 직접 만들기</span>
+          </div>
+          <p class="sidebar-card-desc">규정 체계, 판단 가이드, 운영 기준 — 없는 것을 발견하면 기다리지 않습니다. 만들고, 문서화하고, 공유합니다.</p>
+        </div>
+        <div class="sidebar-card fi">
+          <div class="sidebar-card-top">
+            <div class="sidebar-icon">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M3 11L7 3L11 11" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4.5 8.5h5" stroke="white" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="sidebar-card-label">AI를 판단 파트너로</span>
+          </div>
+          <p class="sidebar-card-desc">도구가 아닌 파트너로 씁니다. 반복 판단은 자동화하고, 사람이 꼭 해야 할 판단에 집중하는 구조를 설계합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<!-- ══ CASES ══ -->
+<section class="sec" id="cases">
+  <div class="wrap">
+    <p class="sec-eyebrow">Case Study</p>
+    <h2 class="sec-title">실제로 해결한 문제들</h2>
+    <div class="cases-grid">
+
+      <!-- Card 3: 파트너 손실 책임구조 재정의 (Case 1) -->
+      <a class="c-card fi" href="case1.html">
+        <div class="c-tags">
+          <span class="c-tag">B2B 파트너 협상</span>
+          <span class="c-tag">AI 계약 분석</span>
+          <span class="c-tag">운영 구조 설계</span>
+        </div>
+        <h3 class="c-title">파트너 손실 책임구조 재정의 및 배상 기준 수립</h3>
+        <p class="c-desc">택배 표준약관·물류 계약서를 AI로 분석해 협상 근거를 확보하고, 정산 선공제 구조를 직접 설계했습니다. 배상 회수율 14.7배 개선에서 시작해 월 1,900만 원 차감까지 스케일하는 구조로 정착시켰습니다.</p>
+        <div class="c-bottom">
+          <div class="c-metric">
+            <span class="c-metric-val">월 1,900만↑</span>
+            <span class="c-metric-lab">파트너 차감 구조 확보</span>
+          </div>
+          <div class="c-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 1: 환불·교환 입력 구조 재설계 (Case 5) -->
+      <a class="c-card fi" href="case5.html">
+        <div class="c-tags">
+          <span class="c-tag">고객 니즈 구조화</span>
+          <span class="c-tag">서비스 기획</span>
+          <span class="c-tag">유관부서 협업</span>
+        </div>
+        <h3 class="c-title">고객 의도 기반 환불·교환 입력 구조 재설계</h3>
+        <p class="c-desc">자유 텍스트에 묻혀 있던 고객 의도를 필수 선택값으로 구조화해, AS 재확인 왕복을 95% 이상 없앴습니다. 중복 필드를 활용하는 스펙을 직접 설계해 개발 범위를 최소화하고 빠르게 반영했습니다.</p>
+        <div class="c-bottom">
+          <div class="c-metric">
+            <span class="c-metric-val">왕복 95%+</span>
+            <span class="c-metric-lab">AS 재확인 감소</span>
+          </div>
+          <div class="c-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 4: 8→2단계 자동화 (Case 3) -->
+      <a class="c-card fi" href="case3.html">
+        <div class="c-tags">
+          <span class="c-tag">생성형 AI 기획</span>
+          <span class="c-tag">워크플로우 자동화</span>
+          <span class="c-tag">직접 구현</span>
+        </div>
+        <h3 class="c-title">반복 운영 프로세스 8→2단계 자동화</h3>
+        <p class="c-desc">Chrome Extension·VBA·Apps Script를 활용해 반복 운영 업무를 직접 자동화했습니다. 수동 8단계를 2단계로 축소하며 운영 생산성과 정합성을 동시에 높였습니다.</p>
+        <div class="c-bottom">
+          <div class="c-metric">
+            <span class="c-metric-val">8→2단계</span>
+            <span class="c-metric-lab">프로세스 축소</span>
+          </div>
+          <div class="c-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <!-- Card 2: Fail-soft UX (Case 2) -->
+      <a class="c-card fi" href="case2.html">
+        <div class="c-tags">
+          <span class="c-tag">VOC → 프로덕트 개선</span>
+          <span class="c-tag">고객 소통</span>
+          <span class="c-tag">UX 설계</span>
+        </div>
+        <h3 class="c-title">장바구니 결합 오류 Fail-soft UX 설계</h3>
+        <p class="c-desc">기술 제약으로 해결 불가한 오류를 시스템 구조 문제로 재정의하고, 오류 상황에서도 사용자가 이탈하지 않는 Fail-soft UX를 설계해 개발팀과 합의했습니다.</p>
+        <div class="c-bottom">
+          <div class="c-metric">
+            <span class="c-metric-val">일 2~3건 → 0건</span>
+            <span class="c-metric-lab">관련 문의 완전 해소</span>
+          </div>
+          <div class="c-arrow">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2.5 7H11.5M8 3.5L11.5 7L8 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="hr"></div></div>
+
+<!-- ══ SKILLS ══ -->
+<section class="sec sec-alt">
+  <div class="wrap">
+    <p class="sec-eyebrow">Skills &amp; Tools</p>
+    <h2 class="sec-title">역량 및 도구</h2>
+    <div class="skills-grid">
+      <div class="sk-group fi">
+        <div class="sk-title">AI · 자동화</div>
+        <div class="sk-list">
+          <div class="sk-item">Claude (계약서 분석 · 자동화 구현)</div>
+          <div class="sk-item">ChatGPT</div>
+          <div class="sk-item">Google NotebookLM (교차 검증)</div>
+          <div class="sk-item">Gemini (약관 분석)</div>
+          <div class="sk-item">Zapier (워크플로우 자동화)</div>
+          <div class="sk-item">Chrome Extension (Claude 활용 구현)</div>
+        </div>
+      </div>
+      <div class="sk-group fi">
+        <div class="sk-title">운영 · 기획</div>
+        <div class="sk-list">
+          <div class="sk-item">VOC 분석 · 서비스 구조 개선</div>
+          <div class="sk-item">Fail-soft UX 설계</div>
+          <div class="sk-item">서비스 운영 기준 · 예외 처리 구조 설계</div>
+          <div class="sk-item">외부 파트너 협상 · 계약 분석</div>
+          <div class="sk-item">운영 지표 설계 및 관리</div>
+        </div>
+      </div>
+      <div class="sk-group fi">
+        <div class="sk-title">도구 · 협업</div>
+        <div class="sk-list">
+          <div class="sk-item">Notion (케이스 문서화)</div>
+          <div class="sk-item">Google Sheets · Apps Script</div>
+          <div class="sk-item">VBA (업무 자동화)</div>
+          <div class="sk-item">Slack</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER / CONTACT ══ -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-name">오희은</div>
+        <div class="footer-sub">Account Manager 지원 — KREAM</div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Header shadow on scroll
+  const hd = document.getElementById('hd');
+  window.addEventListener('scroll', () => {
+    hd.classList.toggle('on', window.scrollY > 8);
+  }, { passive: true });
+
+  // Fade-in on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fi').forEach(el => io.observe(el));
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navEl = document.getElementById('nav');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navEl.classList.toggle('open');
+  });
+
+  // Smooth nav click
+  document.querySelectorAll('nav a, .btn[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (href.startsWith('#')) {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        navToggle.classList.remove('open');
+        navEl.classList.remove('open');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
