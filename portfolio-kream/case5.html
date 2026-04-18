@@ -73,7 +73,7 @@
     .evidence-grid.triple { grid-template-columns: repeat(3, 1fr); }
     .evidence-item { display: flex; flex-direction: column; gap: 12px; }
     .evidence-label { font-size: 13px; font-weight: 700; color: var(--text-1); }
-    .evidence-image { border: 1.5px solid var(--border); border-radius: var(--r); overflow: hidden; }
+    .evidence-image { border-radius: var(--r); overflow: hidden; }
     .evidence-image img { width: 100%; height: auto; display: block; border-radius: var(--r); }
     .evidence-image.no-img { padding: 20px; min-height: 180px; }
     .evidence-desc { font-size: 14px; color: var(--text-2); line-height: 1.8; }
@@ -112,29 +112,35 @@
   </style>
 </head>
 <body>
+
 <header id="hd">
   <div class="h-inner">
-    <span class="logo">오희은</span>
-    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    <a href="index.html" class="logo">오희은</a>
     <nav id="nav">
       <a href="index.html#about">소개</a>
       <a href="index.html#cases">케이스 스터디</a>
       <a href="index.html#contact">연락하기</a>
     </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
   </div>
 </header>
 
-<main>
+<div class="wrap">
   <section class="case-hero fi">
-    <a href="index.html#cases" class="case-hero-nav">← 포트폴리오로 돌아가기</a>
-    <h1 class="case-hero-title fi">민감 이슈 확산 방지를 위한 대응 기준 표준화 및 전사 커뮤니케이션 정렬</h1>
-    <p class="case-hero-summary fi">언론 보도로 재점화된 품질 이슈를 팩트/루머 분리와 조건부 대응 로직으로 표준화하고, CEO 승인 기반 전사 가이드를 빠르게 배포해 2차 확산과 오안내 리스크를 차단한 사례입니다. 이해관계자가 많은 환경에서 대응 기준을 설계하고 조직 전체를 정렬했습니다.</p>
-    <div class="case-hero-meta fi">
+    <a href="index.html#cases" class="case-hero-nav">
+      <svg viewBox="0 0 14 14" fill="none"><path d="M11.5 7H2.5M5 3.5L1.5 7L5 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      포트폴리오로 돌아가기
+    </a>
+    <h1 class="case-hero-title">민감 이슈 확산 방지를 위한 대응 기준 표준화 및 전사 커뮤니케이션 정렬</h1>
+    <p class="case-hero-summary">언론 보도로 재점화된 품질 이슈를 팩트/루머 분리와 조건부 대응 로직으로 표준화하고, CEO 승인 기반 전사 가이드를 빠르게 배포해 2차 확산과 오안내 리스크를 차단한 사례입니다. 이해관계자가 많은 환경에서 대응 기준을 설계하고 조직 전체를 정렬했습니다.</p>
+    <div class="case-hero-meta">
       <span class="meta-chip">역할 · 대응 기준 설계 단독 주도 / CEO 승인·전사 배포</span>
     </div>
   </section>
+</div>
 
-  <section class="sec fi">
+<section class="sec">
+  <div class="wrap">
     <p class="sec-eyebrow">Problem</p>
     <h2 class="sec-title">오안내와 2차 확산이 실제 이슈보다 큰 리스크였습니다</h2>
     <ul class="problem-list">
@@ -151,9 +157,11 @@
         <p>민감 이슈 특성상 대응 톤과 범위가 흔들리면, 사실관계보다 과잉 설명과 오안내 자체가 2차 리스크가 되는 상황이었습니다.</p>
       </li>
     </ul>
-  </section>
+  </div>
+</section>
 
-  <section class="sec sec-alt fi">
+<section class="sec sec-alt">
+  <div class="wrap">
     <p class="sec-eyebrow">What I Did</p>
     <h2 class="sec-title">질문 의도를 분리하고, 조건부 대응 로직으로 조직을 정렬했습니다</h2>
     <ol class="did-list">
@@ -179,9 +187,11 @@
         </div>
       </li>
     </ol>
-  </section>
+  </div>
+</section>
 
-  <section class="sec fi">
+<section class="sec">
+  <div class="wrap">
     <p class="sec-eyebrow">Outcome</p>
     <h2 class="sec-title">1시간 내 전사 대응 완료 — 2차 확산 리스크를 선제 차단했습니다</h2>
     <ul class="outcome-list">
@@ -194,9 +204,11 @@
       <p class="metric-value">1시간 내</p>
       <p class="metric-sub">상황 파악 → 논리 정리 → CEO 승인 → 전사 배포 완료</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="sec sec-alt fi">
+<section class="sec sec-alt">
+  <div class="wrap">
     <p class="sec-eyebrow">Evidence</p>
     <h2 class="sec-title">실제 과정과 결과물</h2>
     <div class="evidence-grid single fi">
@@ -208,9 +220,11 @@
         <p class="evidence-desc">과거 종결 이슈와 현재 판매 제품을 명확히 분리하고, 고객 문의 유형에 따라 선제 언급 금지와 최소 답변 원칙을 적용한 대응 기준을 수립했습니다. 내부 메시지에서 "불필요한 리스크 노출은 줄이면서도 고객 불안은 최소화하는 방향"을 기준으로 CEO 승인 요청했고, CEO가 즉시 승인해 전사 대응 톤을 통일했습니다.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="sec fi">
+<section class="sec">
+  <div class="wrap">
     <p class="sec-eyebrow">Insight</p>
     <h2 class="sec-title">이 과정에서 배운 것</h2>
     <ol class="insight-list">
@@ -233,17 +247,17 @@
       <span class="tag">#OperationsPlanning</span>
       <span class="tag">#CommunicationDesign</span>
     </div>
-  </section>
-</main>
+  </div>
+</section>
 
-<footer>
+<footer id="contact">
   <div class="wrap footer-grid">
     <div>
       <p class="footer-name">오희은</p>
       <p class="footer-sub">Account Manager — KREAM 지원</p>
+      <p class="footer-sub" style="margin-top:4px;">gldms1009@naver.com · 010-2357-2674</p>
     </div>
-    <div>
-      <p>gldms1009@naver.com · 010-2357-2674</p>
+    <div class="footer-actions">
       <a href="mailto:gldms1009@naver.com" class="btn btn-outline">이메일 보내기</a>
     </div>
   </div>
@@ -262,14 +276,10 @@
   document.querySelectorAll('nav a, .btn[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const href = a.getAttribute('href');
-      if (href.startsWith('#')) {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        navToggle.classList.remove('open'); navEl.classList.remove('open');
-      }
+      if (href.startsWith('#')) { e.preventDefault(); const target = document.querySelector(href); if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' }); navToggle.classList.remove('open'); navEl.classList.remove('open'); }
     });
   });
 </script>
+
 </body>
 </html>
